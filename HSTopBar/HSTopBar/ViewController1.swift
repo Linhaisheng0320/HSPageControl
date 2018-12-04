@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController1: UIViewController,HSTopBarChildViewControllerDelegate {
+class ViewController1: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +20,7 @@ class ViewController1: UIViewController,HSTopBarChildViewControllerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func updateOnScrollThis(topBarViewController: HSTopBarViewController) {
-        
-    }
+
     /*
     // MARK: - Navigation
 
