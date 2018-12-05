@@ -11,7 +11,7 @@ import UIKit
 //选择代理
 @objc protocol LSSegementViewDelegate: NSObjectProtocol{
     //点击操作代理
-    func selectedTitleItem(mcSegmentView: LSSegmentView, itemTag: Int)
+    func selectedTitleItem(titleView: LSTitleView, index: Int)
 
     //标题View初始化完成操作，如果需要进行自定义的titleView可实现以下代理。
     @objc optional func viewForIndexAtSegmentView(titleView: LSTitleView,index:Int,title:String)->LSTitleView
@@ -79,7 +79,7 @@ class LSSegmentView: UIView,UIScrollViewDelegate {
             titleView.font = UIFont.systemFont(ofSize: 17)
             titleView.title = self.titleArray[i]
             let deTitleView = self.delegate?.viewForIndexAtSegmentView?(titleView: titleView, index: i, title: self.titleArray[i]) ?? titleView
-            
+
             deTitleView.clickBtn.tag = i;
             deTitleView.clickBtn.addTarget(self, action: #selector(didTitleItem), for: UIControlEvents.touchUpInside)
             self.scrollView.addSubview(deTitleView)
@@ -109,7 +109,7 @@ class LSSegmentView: UIView,UIScrollViewDelegate {
     @objc func didTitleItem(btn: UIButton){
         self.clickBlack?(btn)
         self.scrollMove(tag: btn.tag)
-        self.delegate?.selectedTitleItem(mcSegmentView: self, itemTag: btn.tag)
+        self.delegate?.selectedTitleItem(titleView: self.titleViewArray[btn.tag], index: btn.tag)
     }
 
     private func curSelectedItem(){

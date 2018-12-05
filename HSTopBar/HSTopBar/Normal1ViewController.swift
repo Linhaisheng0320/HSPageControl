@@ -9,6 +9,8 @@
 import UIKit
 
 class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDelgate {
+
+
     var segmentView: LSSegmentView!
     var contentView: LSContentView!
     var vcArray: Array<UIViewController>!
@@ -22,17 +24,11 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
         self.automaticallyAdjustsScrollViewInsets = true
         self.view.backgroundColor = UIColor.white;
         self.v1 = ViewController1()
-//        v1.view.layer.insertSublayer(self.randomRainbowColor(), at: 0)
-
         self.v2 = ViewController2()
-//        v2.view.layer.insertSublayer(self.randomRainbowColor(), at: 0)
-
         self.v3 = ViewController3()
-//        v3.view.layer.insertSublayer(self.randomRainbowColor(), at: 0)
 
         self.segmentView = LSSegmentView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 50), delegate: self, titleArray: ["view1","view2","view3"])
         self.view.addSubview(self.segmentView);
-//        self.segmentView.backgroundColor = self.randomColor();
 
         self.contentView = LSContentView(frame: CGRect(x: 0, y: 50, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height-50), parentViewController: self, segmentView: self.segmentView,delegate:self)
         self.view.addSubview(self.contentView)
@@ -44,10 +40,8 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
         // Dispose of any resources that can be recreated.
     }
 
-    func selectedTitleItem(mcSegmentView: LSSegmentView, itemTag: Int){
-        
-    }
 
+//MARK: - LSContentDelgate代理
     func numberOfLSContentView()->Int{
         return self.vcArray.count;
     }
@@ -57,23 +51,19 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
         return self.vcArray[index]
     }
 
-    //MARK: - HSTopViewControllerDelegate
-    //默认背景图
-    func noChildDefaultBackground()->UIView{
-        let v = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width*0.2/2, y: UIScreen.main.bounds.height*0.2/2, width: UIScreen.main.bounds.width*0.8, height: UIScreen.main.bounds.height*0.8))
-        v.image = UIImage(named: "noData")
-        return v
+//MARK: - LSSegementViewDelegate
+    func selectedTitleItem(titleView: LSTitleView, index: Int) {
+         print("点击了"+titleView.title)
     }
 
-    //HSTopBarLineView线条
-    func topViewlineView()->UIView{
-        let v = UIImageView()
-        v.image = UIImage(named: "icon_more_up")
-        v.frame.size.width = 7
-        v.frame.size.height = 7
-        return v
+    func viewForIndexAtSegmentView(titleView: LSTitleView, index: Int, title: String) -> LSTitleView {
+        titleView.title = titleView.title + "后缀"
+        return titleView;
     }
+}
 
+//MARK: - 颜色方法
+extension Normal1ViewController{
     func randomColor()->UIColor{
         let red = CGFloat(arc4random()%256)/255.0
         let green = CGFloat(arc4random()%256)/255.0
@@ -108,7 +98,7 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
                               UIColor.cyan.cgColor,
                               UIColor.blue.cgColor,
                               UIColor.purple.cgColor]
-        
+
         //定义每种颜色所在的位置
         let gradientLocations:[NSNumber] = [0.0, 0.17, 0.33, 0.5, 0.67, 0.83, 1.0]
 
@@ -126,8 +116,4 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
         return gradientLayer;
     }
 
-    func viewForIndexAtSegmentView(titleView: LSTitleView, index: Int, title: String) -> LSTitleView {
-        titleView.title = titleView.title + "后缀"
-        return titleView;
-    }
 }

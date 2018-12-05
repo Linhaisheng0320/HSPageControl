@@ -153,12 +153,12 @@
 		AC1C584A1FFB622B00F684D2 /* PageControl */ = {
 			isa = PBXGroup;
 			children = (
-				AC33A6FF21B67CC100E9F301 /* LSCollectionView.swift */,
 				AC33A70321B67CC100E9F301 /* LSConfig.swift */,
-				AC33A70021B67CC100E9F301 /* LSContentView.swift */,
-				AC33A70121B67CC100E9F301 /* LSSegmentView.swift */,
 				AC33A70221B67CC100E9F301 /* LSTitleView.swift */,
 				AC73BB4121B75FB60003AA31 /* LSSegmentStyle.swift */,
+				AC33A70121B67CC100E9F301 /* LSSegmentView.swift */,
+				AC33A70021B67CC100E9F301 /* LSContentView.swift */,
+				AC33A6FF21B67CC100E9F301 /* LSCollectionView.swift */,
 			);
 			path = PageControl;
 			sourceTree = "<group>";
