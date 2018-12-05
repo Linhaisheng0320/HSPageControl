@@ -16,7 +16,10 @@ class ViewController3: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
+    deinit {
+        print("释放了3")
+    }
 
     /*
     // MARK: - Navigation

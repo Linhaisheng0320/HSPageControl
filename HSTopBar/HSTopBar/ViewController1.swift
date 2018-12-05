@@ -21,6 +21,9 @@ class ViewController1: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    deinit {
+        print("释放了1")
+    }
     /*
     // MARK: - Navigation
 

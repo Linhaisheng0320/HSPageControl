@@ -13,8 +13,8 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
     var contentView: LSContentView!
     var vcArray: Array<UIViewController>!
     var v1: ViewController1!
-    var v2:ViewController2!
-    var v3:ViewController3!
+    var v2: ViewController2!
+    var v3: ViewController3!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
     }
 
     func selectedTitleItem(mcSegmentView: LSSegmentView, itemTag: Int){
-
+        
     }
 
     func numberOfLSContentView()->Int{
@@ -124,5 +124,10 @@ class Normal1ViewController: UIViewController,LSSegementViewDelegate,LSContentDe
         //设置其CAGradientLayer对象的frame，并插入view的layer
         gradientLayer.frame = self.view.frame
         return gradientLayer;
+    }
+
+    func viewForIndexAtSegmentView(titleView: LSTitleView, index: Int, title: String) -> LSTitleView {
+        titleView.title = titleView.title + "后缀"
+        return titleView;
     }
 }

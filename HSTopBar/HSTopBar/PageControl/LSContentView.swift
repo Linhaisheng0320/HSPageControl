@@ -115,12 +115,6 @@ class LSContentView: UIView,UICollectionViewDelegate,UICollectionViewDataSource 
             let _ = self.delegate!.childViewController(childVC: self.currentChildVC!, forIndex: indexPath.row)
         }else{
             self.currentChildVC = self.delegate!.childViewController(childVC: nil, forIndex: indexPath.row)
-//            if let _ = self.currentChildVC as? LSScrollPageViewChildVcDelegate{
-//
-//            }else{
-//                assert(false, "子控制器必须遵守LSScrollPageViewChildVcDelegate协议")
-//            }
-
             // 设置当前下标
             self.childVCDic["\(indexPath.row)"] = self.currentChildVC
         }

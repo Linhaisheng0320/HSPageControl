@@ -13,8 +13,6 @@ typealias LSShouldBeginHandler = (LSCollectionView, UIPanGestureRecognizer) -> B
 
 class LSCollectionView: UICollectionView {
     var gestureBeginHandler : LSShouldBeginHandler?
-
-
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
         if (self.gestureBeginHandler != nil) && gestureRecognizer == self.panGestureRecognizer{

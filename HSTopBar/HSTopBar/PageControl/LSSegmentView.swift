@@ -13,8 +13,8 @@ import UIKit
     //点击操作代理
     func selectedTitleItem(mcSegmentView: LSSegmentView, itemTag: Int)
 
-    //初始化完成操作，如果需要对SegmentView进行自定义。
-    @objc optional func viewForIndexAtSegmentView(titleView: LSTitleView,index:Int,title:String)
+    //标题View初始化完成操作，如果需要进行自定义的titleView可实现以下代理。
+    @objc optional func viewForIndexAtSegmentView(titleView: LSTitleView,index:Int,title:String)->LSTitleView
 
 }
 
@@ -76,11 +76,14 @@ class LSSegmentView: UIView,UIScrollViewDelegate {
         let w = self.frame.width/CGFloat(max(all,1))
         for i in 0..<all{
             let titleView = LSTitleView(frame: CGRect(x:CGFloat(i)*w,y: 0,width: w,height: self.frame.height))
+            titleView.font = UIFont.systemFont(ofSize: 17)
             titleView.title = self.titleArray[i]
-            titleView.clickBtn.tag = i;
-            titleView.clickBtn.addTarget(self, action: #selector(didTitleItem), for: UIControlEvents.touchUpInside)
-            self.scrollView.addSubview(titleView)
-            self.titleViewArray.append(titleView)
+            let deTitleView = self.delegate?.viewForIndexAtSegmentView?(titleView: titleView, index: i, title: self.titleArray[i]) ?? titleView
+            
+            deTitleView.clickBtn.tag = i;
+            deTitleView.clickBtn.addTarget(self, action: #selector(didTitleItem), for: UIControlEvents.touchUpInside)
+            self.scrollView.addSubview(deTitleView)
+            self.titleViewArray.append(deTitleView)
         }
         self.curSelected = 0
         let _ = self.addCurLine()

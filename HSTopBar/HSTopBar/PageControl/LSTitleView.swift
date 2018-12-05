@@ -11,8 +11,14 @@ import UIKit
 class LSTitleView: UIView {
     var selectColor: UIColor = UIColor.red //选择颜色
     var normalColor: UIColor = UIColor.black //默认颜色
-
+    
     var clickBtn: UIButton! //底部按钮
+
+    var font: UIFont!{ //默认字体大小
+        didSet{
+            self.titleLabel.font = font
+        }
+    }
 
     //标题
     var title:String = ""{
@@ -22,6 +28,7 @@ class LSTitleView: UIView {
             self.titleLabel.center = CGPoint(x: self.frame.size.width/2,y:self.frame.size.height/2)
         }
     }
+
     var titleLabel: UILabel! //标题Label
 
     //是否点击
